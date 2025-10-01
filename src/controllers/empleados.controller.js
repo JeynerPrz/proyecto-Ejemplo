@@ -75,3 +75,30 @@ export const eliminarEmpleado = async (req, res) => {
     });
   }
 };
+
+export const actualizarEmpleadoPatch = async (req, res) => {
+  try {
+    const { id_empleado } = req.params;
+    const datos = req.body;
+
+    const [result] = await pool.query(
+      "UPDATE Empleados SET ? WHERE id_empleado = ?",
+      [datos, id_empleado]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({
+        mensaje: `Categoría con ID ${id_empleado} no encontrada.`,
+      });
+    }
+
+    res.status(200).json({
+      mensaje: `Categoría con ID ${id_empleado} actualizada.`,
+    });
+  } catch (error) {
+    res.status(500).json({
+      mensaje: "Error al actualizar la categoría.",
+      error,
+    });
+  }
+};

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {obtenerClientes,obtenerCliente, registrarCliente,eliminarCliente} from '../controllers/clientes.controller.js';
+import {obtenerClientes,obtenerCliente, registrarCliente,eliminarCliente, actualizarClientePatch} from '../controllers/clientes.controller.js';
 
 const router = Router();
 
@@ -14,5 +14,8 @@ router.post('/registrarcliente', registrarCliente);
 
 // Eliminar una categoría por ID
 router.delete('/eliminarCliente/:id_cliente', eliminarCliente);
+
+// Actualizar parcialmente una categoría por su ID
+router.patch('/actualizarCliente/:id_cliente', actualizarClientePatch);
 
 export default router;

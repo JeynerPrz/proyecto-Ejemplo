@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {obtenerProductos,obtenerProducto, registrarProductos,eliminarProducto} from '../controllers/producto.controller.js';
+import {obtenerProductos,obtenerProducto, registrarProductos,eliminarProducto,actualizarProductoPatch} from '../controllers/producto.controller.js';
 
 const router = Router();
 
@@ -12,5 +12,8 @@ router.get('/producto/:id_producto', obtenerProducto);
 router.post('/registrarproducto', registrarProductos);
 
 router.delete('/eliminarproducto/:id_producto', eliminarProducto);
+
+// Actualizar parcialmente una categoría por su ID
+router.patch('/actualizarproducto/:id_producto', actualizarProductoPatch);
 
 export default router;

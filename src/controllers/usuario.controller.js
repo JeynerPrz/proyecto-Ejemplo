@@ -70,3 +70,30 @@ export const eliminarUsuario = async (req, res) => {
     });
   }
 };
+
+export const actualizarUsuarioPatch = async (req, res) => {
+  try {
+    const { id_usuario } = req.params;
+    const datos = req.body;
+
+    const [result] = await pool.query(
+      "UPDATE Usuarios SET ? WHERE id_usuario = ?",
+      [datos, id_producto]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({
+        mensaje: `Categoría con ID ${id_usuario} no encontrada.`,
+      });
+    }
+
+    res.status(200).json({
+      mensaje: `Categoría con ID ${id_usuario} actualizada.`,
+    });
+  } catch (error) {
+    res.status(500).json({
+      mensaje: "Error al actualizar la categoría.",
+      error,
+    });
+  }
+};

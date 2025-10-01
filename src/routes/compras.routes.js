@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {obtenerCompras,obtenerCompra, registrarCompra,eliminarCompra} from '../controllers/compra.controller.js';
+import {obtenerCompras,obtenerCompra, registrarCompra,eliminarCompra, actualizarCompraPatch} from '../controllers/compra.controller.js';
 
 const router = Router();
 
@@ -13,5 +13,8 @@ router.get('/compra/:id_compra', obtenerCompra);
 router.post('/registrarcompra', registrarCompra);
 
 router.delete('/eliminarcompra/:id_compra', eliminarCompra);
+
+// Actualizar parcialmente una categoría por su ID
+router.patch('/actualizarcompra/:id_compra', actualizarCompraPatch);
 
 export default router;

@@ -73,3 +73,30 @@ export const eliminarDetalleVenta = async (req, res) => {
     });
   }
 };
+
+export const actualizarDetallesVentaPatch = async (req, res) => {
+  try {
+    const { id_detalle_venta } = req.params;
+    const datos = req.body;
+
+    const [result] = await pool.query(
+      "UPDATE Detalles_Ventas SET ? WHERE id_detalle_venta = ?",
+      [datos, id_detalle_venta]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({
+        mensaje: `Categoría con ID ${id_detalle_venta} no encontrada.`,
+      });
+    }
+
+    res.status(200).json({
+      mensaje: `Categoría con ID ${id_detalle_venta} actualizada.`,
+    });
+  } catch (error) {
+    res.status(500).json({
+      mensaje: "Error al actualizar la categoría.",
+      error,
+    });
+  }
+};
