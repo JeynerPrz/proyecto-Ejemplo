@@ -1,21 +1,21 @@
 import { Router } from 'express';
-import {obtenerClientes,obtenerCliente, registrarCliente,eliminarCliente, actualizarClientePatch} from '../controllers/clientes.controller.js';
+import {obtenerClientes, obtenerCliente, registrarCliente, eliminarCliente, actualizarClientePatch} from '../controllers/clientes.controllers.js';
 
 const router = Router();
 
-// Obtener todas las categorías
-router.get('/clientes', obtenerClientes);
+// Rutas
+router.get('/clientes', obtenerClientes); // Ruta para obtener todos los clientes 
 
-// Obtener una categoría por su ID
+// RUTA PARA OBTENER UNA CLIENTE POR SU ID 
 router.get('/cliente/:id_cliente', obtenerCliente);
 
-// Ruta para registrar una nueva cliente
-router.post('/registrarcliente', registrarCliente);
+// RUTA PARA REGISTRAR UN CLIENTE  
+router.post ('/registrarcliente' , registrarCliente);
 
-// Eliminar una categoría por ID
-router.delete('/eliminarCliente/:id_cliente', eliminarCliente);
+// RUTA PARA ELIMINAR UN CLIENTE POR SU ID
+router.delete('/eliminarcliente/:id_cliente', eliminarCliente);
 
-// Actualizar parcialmente una categoría por su ID
-router.patch('/actualizarCliente/:id_cliente', actualizarClientePatch);
+// RUTA PARA ACTUALIZAR UN CLIENTE POR SU ID 
+router.patch('/actualizarclientepatch/:id_cliente', actualizarClientePatch);
 
 export default router;

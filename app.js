@@ -1,13 +1,13 @@
-// Importar las dependencias necesarias
+//Importar las dependencias necesarias
 import express from 'express';
 import cors from 'cors';
 
-// Importar las rutas
+//Importar las rutas
 import rutasCategorias from './src/routes/categorias.routes.js';
 import rutasClientes from './src/routes/clientes.routes.js';
 import rutasCompras from './src/routes/compras.routes.js';
-import rutasDetallesCompra from './src/routes/detalles_compras.routes.js';
-import rutasDetallesVenta from './src/routes/detalles_venta.routes.js';
+import rutasDetallesCompras from './src/routes/detalles_compras.routes.js';
+import rutasDetallesVentas from './src/routes/detalles_ventas.routes.js';
 import rutasEmpleados from './src/routes/empleados.routes.js';
 import rutasProductos from './src/routes/productos.routes.js';
 import rutasUsuarios from './src/routes/usuarios.routes.js';
@@ -23,15 +23,15 @@ app.use(cors({
 }));
 
 // Middleware para parsear el cuerpo de las solicitudes
-app.use(express.json({ limit: '10mb' }));
+app.use(express.json({ limit: '10mb' })); //10 MB
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 // Rutas
 app.use('/api', rutasCategorias);
 app.use('/api', rutasClientes);
 app.use('/api', rutasCompras);
-app.use('/api', rutasDetallesCompra);
-app.use('/api', rutasDetallesVenta);
+app.use('/api', rutasDetallesCompras);
+app.use('/api', rutasDetallesVentas);
 app.use('/api', rutasEmpleados);
 app.use('/api', rutasProductos);
 app.use('/api', rutasUsuarios);
@@ -46,3 +46,4 @@ app.use((req, res, next) => {
 
 // Exportar la aplicación
 export default app;
+

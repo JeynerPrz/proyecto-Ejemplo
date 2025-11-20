@@ -1,20 +1,21 @@
 import { Router } from 'express';
-import {obtenerVentas,obtenerVenta, registrarVenta,eliminarVenta, actualizarVentaPatch} from '../controllers/ventas.controller.js';
+import {obtenerVentas, obtenerVenta, registrarVenta, eliminarVenta, actualizarVentaPatch} from '../controllers/ventas.controllers.js';
 
 const router = Router();
 
-// Obtener todas las categorías
-router.get('/ventas', obtenerVentas);
+// Rutas
+router.get('/ventas', obtenerVentas); // Ruta para obtener todas las ventas
 
-// Obtener una categoría por ID
+// RUTA PARA OBTENER UNA VENTA POR SU ID 
 router.get('/venta/:id_venta', obtenerVenta);
 
-router.post('/registrarVenta', registrarVenta);
+// RUTA PARA REGISTRAR UNA VENTA
+router.post ('/registrarventa' , registrarVenta);
 
-// Eliminar una categoría por ID
-router.delete('/eliminarVenta/:id_venta', eliminarVenta);
+// RUTA PARA ELIMINAR UNA VENTA POR SU ID
+router.delete('/eliminarventa/:id_venta', eliminarVenta);
 
-// Actualizar parcialmente una categoría por su ID
-router.patch('/actualizarVenta/:id_venta', actualizarVentaPatch);
+// RUTA PARA ACTUALIZAR UNA VENTA POR SU ID 
+router.patch('/actualizarventapatch/:id_compra', actualizarVentaPatch);
 
 export default router;
